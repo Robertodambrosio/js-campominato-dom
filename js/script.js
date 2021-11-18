@@ -12,8 +12,6 @@ document.getElementById('play').addEventListener('click', function () {
 
 const container = document.querySelector('.container');
 
-
-
 // ======================== Funzioni
 
 function playFunction() {
@@ -38,11 +36,18 @@ function playFunction() {
         addSquare(49);
     }
 
-const squareArray = document.getElementsByClassName("square");
-console.log(squareArray);
 
 }
 
+
+
+
+
+
+
+
+
+// ************funzione per aggiungere i quadrati dentro il container
 function addSquare(num) {
     for (let i = 1; i <= num; i++) {
         const square = document.createElement('div');
@@ -51,8 +56,30 @@ function addSquare(num) {
         container.appendChild(square);
         square.addEventListener('click', function () {
             square.classList.add('correct');
-        });
-        
+        });       
     }
 }
+
+
+// ****************funzione per creare le bombe
+function bombGenerator() {
+    const bombArray = [];
+
+    while(bombArray.length < 16) {
+        const randomNum = Math.floor(Math.random() * 100) + 1;
+        if (!bombArray.includes(randomNum)) {
+            bombArray.push(randomNum)
+        }
+        // console.log(bombArray);
+        // bombArray.addEventListener('click', function () {
+        // bombArray.classList.add('wrong');
+        // });
+    }
+}
+
+// function bombInsert() {
+//     const bombe = bombGenerator();
+//     console.log(bombe);
+//     const squareArray = document.getElementsByClassName("square");
+// }
 
