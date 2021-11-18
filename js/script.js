@@ -1,11 +1,3 @@
-// PROVA
-// let level = 0;
-
-// do {
-//     level = parseInt(prompt("Scegli il tuo livello di difficoltà"));
-// } while (level < 0 || level > 3) {}
-// console.log(level);
-
 document.getElementById('play').addEventListener('click', function () {
     playFunction()
 });
@@ -17,26 +9,29 @@ const container = document.querySelector('.container');
 function playFunction() {
     container.innerHTML = "";
     const levelSelected = document.getElementById('gameLevel').value;
-    
 
-    if (levelSelected == 1) { 
-        container.classList.remove("medium", "hard")     
+
+    if (levelSelected == 1) {
+        container.classList.remove("medium", "hard")
+
         addSquare(100);
-
-    } else if (levelSelected == 2) {       
+        bombGenerator(100);
+        insertBomb(100);
+    } else if (levelSelected == 2) {
         container.classList.add("medium")
         container.classList.remove("hard")
 
         addSquare(81);
-
-    } else if (levelSelected == 3) {       
+        bombGenerator(81);
+        insertBomb(81);
+    } else if (levelSelected == 3) {
         container.classList.add("hard")
         container.classList.remove("medium")
 
         addSquare(49);
+        bombGenerator(49);
+        insertBomb(49);
     }
-
-
 }
 
 
@@ -56,30 +51,41 @@ function addSquare(num) {
         container.appendChild(square);
         square.addEventListener('click', function () {
             square.classList.add('correct');
-        });       
+        });
     }
 }
 
-
 // ****************funzione per creare le bombe
-function bombGenerator() {
+function bombGenerator(num) {
     const bombArray = [];
 
-    while(bombArray.length < 16) {
-        const randomNum = Math.floor(Math.random() * 100) + 1;
+    while (bombArray.length < 16) {
+        const randomNum = Math.floor(Math.random() * num) + 1;
         if (!bombArray.includes(randomNum)) {
             bombArray.push(randomNum)
         }
-        // console.log(bombArray);
-        // bombArray.addEventListener('click', function () {
-        // bombArray.classList.add('wrong');
-        // });
+    }
+    return bombArray;
+}
+
+
+// ****************funzione per inserire le bombe nella tabella
+function insertBomb(num) {
+    const squareArray = document.getElementsByClassName("square");
+    const bombe = bombGenerator(num);
+    for (let i = 0; i < bombe.length; i++) {
+        const bigBomb = bombe[i];
+        squareArray[bigBomb].addEventListener('click', function () {      
+            for (let j = 0; j < bombe.length; j++) {
+                console.log(j);
+                squareArray[bombe[j]].classList.add("wrong");
+            }
+            squareArray[bigBomb].classList.add("wrongest");
+        });
     }
 }
 
-// function bombInsert() {
-//     const bombe = bombGenerator();
-//     console.log(bombe);
-//     const squareArray = document.getElementsByClassName("square");
-// }
+
+
+
 
