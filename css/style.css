@@ -7,9 +7,7 @@
 
 
 body {
-    background-image: url(https://static.vecteezy.com/ti/vettori-gratis/p1/273920-deep-ocean-background-gratuito-vettoriale.jpg);
-    background-size: contain;
-    background-position: center;
+    background-color: rgba(0, 225, 255);
     height: 100vh;
 }
 
@@ -109,3 +107,6 @@ button {
     border-radius: 20px;
     cursor: pointer;
 }
+
+
+

@@ -3,6 +3,8 @@ document.getElementById('play').addEventListener('click', function () {
 });
 
 const container = document.querySelector('.container');
+const bodybg = document.getElementById('body');
+bodybg = bodybg.classList.add("bgbody")
 
 // ======================== Funzioni
 
@@ -74,7 +76,8 @@ function insertBomb(num) {
             for (let j = 0; j < bombe.length; j++) {
                 console.log(j);
                 squareArray[bombe[j]].classList.add("wrong"); 
-                squareArray[bombe[j]].innerHTML = `<i class="fas fa-fire fire"></i>`;          
+                squareArray[bombe[j]].innerHTML = `<i class="fas fa-fire fire"></i>`;
+                         
             }
             squareArray[bigBomb].classList.add("wrongest");
         });
