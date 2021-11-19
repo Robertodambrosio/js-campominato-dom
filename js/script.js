@@ -3,8 +3,6 @@ document.getElementById('play').addEventListener('click', function () {
 });
 
 const container = document.querySelector('.container');
-const bodybg = document.getElementById('body');
-bodybg = bodybg.classList.add("bgbody")
 
 // ======================== Funzioni
 
@@ -66,7 +64,9 @@ function bombGenerator(num) {
 }
 
 
-// ****************funzione per inserire le bombe nella tabella & mostra tutte le bombe al momento del click sulla bomba
+// ****************funzione per inserire le bombe nella tabella & 
+// *****************mostra tutte le bombe al momento del click sulla bomba
+
 function insertBomb(num) {
     const squareArray = document.getElementsByClassName("square");
     const bombe = bombGenerator(num); 
